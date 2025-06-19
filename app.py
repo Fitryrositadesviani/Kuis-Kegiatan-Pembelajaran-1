@@ -38,6 +38,7 @@ soal_pilgan = [
     }
 ]
 
+# Soal uraian + pembahasan yang rapi (dipisah baris dengan \n)
 soal_uraian = [
     {
         "soal": "6. (Uraian) Pada percobaan pelemparan tiga koin sekaligus:\n a. Tentukan ruang sampel dan banyaknya elemen ruang sampel\n b. Tentukan kejadian A yaitu muncul paling sedikit dua angka",
@@ -97,4 +98,6 @@ if st.session_state.submitted_pg:
         jawaban = st.text_area(soal["soal"], key=f"essay{i}")
         if jawaban:
             with st.expander("💡 Lihat Pembahasan"):
-                st.write(soal["pembahasan"])
+                bagian = soal["pembahasan"].split("\n")
+                for baris in bagian:
+                    st.write(baris)
